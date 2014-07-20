@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 curl -OL https://github.com/adionditsak/sneak.py/archive/master.zip
 unzip master.zip
