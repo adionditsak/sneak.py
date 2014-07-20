@@ -7,6 +7,8 @@ Streamline history files with timestamp to /var/log/cli.log for command-line log
 
 Very early stage - contributions and good ideas appreciated.
 
+Tested on Debian and Redhat based distros.
+
 ###Installation steps
 
 ####Shell steps
@@ -40,7 +42,7 @@ Very early stage - contributions and good ideas appreciated.
 
 ####Sample output
     
-    root@anders:~# tail -f /var/log/cli.log
+    root@server:~# tail -f /var/log/cli.log
     [2014-07-19 11:38:06 - /root/.bash_history] Command: ls
     [2014-07-19 11:38:12 - /root/.bash_history] Command: clear
     [2014-07-19 11:38:15 - /root/.bash_history] Command: which $SHELL
