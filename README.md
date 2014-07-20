@@ -9,6 +9,8 @@ Very early stage - contributions and good ideas appreciated.
 
 ###Installation steps
 
+####Shell steps
+
     curl -OL https://github.com/adionditsak/sneak.py/archive/master.zip
     unzip master.zip
     cd sneak.py-master
@@ -17,7 +19,10 @@ Very early stage - contributions and good ideas appreciated.
     cp sneak.py /usr/local/bin/sneak/sneak.py
     chmod +x /etc/init.d/sneak /usr/local/bin/sneak/sneak.py
 
-
+####Copy/paste oneliner
+    
+    curl -L https://raw.githubusercontent.com/adionditsak/sneak.py/master/install.sh | sh -
+    
 ###Usage
 
     [root@server ~]# /etc/init.d/sneak start
