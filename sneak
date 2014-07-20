@@ -12,7 +12,7 @@ start() {
 }
 
 status() {
-    pid_status=$(ps aux | grep sneak.py | grep -v grep | awk '{print $2}')
+    pid_status=$(ps aux | grep sneak.py | grep -v grep)
     echo $pid_status
 }
 
