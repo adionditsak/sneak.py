@@ -19,6 +19,7 @@ echo "Making files executable"
 chmod +x /etc/init.d/sneak /usr/local/bin/sneak/sneak.py
 
 echo "Removing zip and git directory"
+cd ..
 rm -rf sneak.py-master/ master.zip
 
 sleep 2
