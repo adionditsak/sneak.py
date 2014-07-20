@@ -38,3 +38,17 @@ Very early stage - contributions and good ideas appreciated.
     Scanned dirs: /home/ /root/
     --------------------------------------------------------------------------
 
+####Sample output
+    
+    root@anders:~# tail -f /var/log/cli.log
+    [2014-07-19 11:38:06 - /root/.bash_history] Command: ls
+    [2014-07-19 11:38:12 - /root/.bash_history] Command: clear
+    [2014-07-19 11:38:15 - /root/.bash_history] Command: which $SHELL
+    [2014-07-19 11:38:19 - /root/.bash_history] Command: yes
+    [2014-07-19 11:38:26 - /root/.bash_history] Command: cd /var/log/
+    [2014-07-19 11:38:27 - /root/.bash_history] Command: ls
+    [2014-07-19 11:38:29 - /root/.bash_history] Command: clear
+    [2014-07-19 11:38:30 - /root/.bash_history] Command: ls
+    [2014-07-19 13:53:00 - /root/.bash_history] Command: sh
+    [2014-07-20 10:39:53 - /root/.bash_history] Command: ps aux | grep python
+    
