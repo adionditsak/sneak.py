@@ -12,14 +12,8 @@ start() {
 }
 
 status() {
-  pid=$(ps aux | grep sneak | grep -v grep | awk '{print $2}')
-
-  if [ -z "$pid" ]
-  then
-    echo "sneek.py is not running."
-  else
-    echo "sneek.py is running"
-  fi
+    pid_status=$(ps aux | grep sneak | grep -v grep)
+    echo $pid_status
 }
 
 stop() {
