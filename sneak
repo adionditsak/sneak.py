@@ -1,0 +1,36 @@
+#!/bin/sh
+# chkconfig: 123456 90 10
+# sneak.py - Linux command-line logger (streamline history files)
+#
+
+workdir=/usr/local/bin/sneak
+
+start() {
+    cd $workdir
+    /usr/bin/python sneak.py &
+    echo "sneak.py started."
+}
+
+stop() {
+    pid=$(ps aux | grep sneak | awk '{print $2}')
+    kill $pid
+    sleep 2
+    echo "sneak.py killed."
+}
+
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  restart)
+    stop
+    start
+    ;;
+  *)
+    echo "Usage: /etc/init.d/sneak {start|stop|restart}"
+    exit 1
+esac
+exit 0
