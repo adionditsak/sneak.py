@@ -17,10 +17,10 @@ import threading
 
 class Sneak(object):
 
-    def __init__(self):
+    def __init__(self, sneak_log_file, scan_dirs):
 
-        self.sneak_log_file = '/var/log/cli.log'
-        self.scan_dirs = '/home/ /root/'
+        self.sneak_log_file = sneak_log_file
+        self.scan_dirs = scan_dirs
         self.system_wide_conf = '/etc/profile'
         self.append_history = 'export PROMPT_COMMAND="history -a"'
         self.timestamp = None
@@ -45,23 +45,29 @@ class Sneak(object):
 
         return self.histories
 
+    def get_username(path, sep=os.sep):
+
+        path, filename = os.path.split(os.path.abspath(path))
+        bottom, rest = path[1:].split(sep, 1)
+        bottom = sep + bottom
+        middle, top = os.path.split(rest)
+
+        return top
+
     def ensure_live_history(self, system_wide_conf):
 
         with open(system_wide_conf, 'r') as f:
             env_list = f.readlines()
-            f.close()
             found_line = False
             for line in env_list:
-                if str(self.append_history) in line:
+                if self.append_history in line:
                     found_line = True
 
             if not found_line:
                 with open(system_wide_conf, 'a') as f:
-                    f.write(str(self.append_history)+"\n")
+                    f.write(self.append_history + "\n")
 
                 os.system("source %s" % system_wide_conf)
-
-            f.close()
 
     def log_definer(self, history):
 
@@ -72,26 +78,26 @@ class Sneak(object):
                     break
                 else:
                     last_line = line
-        f.close()
 
         while True:
             with open(history) as f:
                 lines = f.readlines()
-                f.close()
 
                 if lines[-1] != last_line:
                     self.timestamp = time.time()
                     self.datetime = datetime.datetime.fromtimestamp(self.timestamp).strftime('%Y-%m-%d %H:%M:%S')
+                    self.username = get_username(history)
+
                     last_line = lines[-1]
 
-                    self.log_writer(self.datetime, history, last_line)
+                    self.log_writer(self.datetime, self.username, history, last_line)
                 else:
                     time.sleep(1)
 
-    def log_writer(self, datetime, history, line):
+    def log_writer(self, datetime, username, history, line):
 
         with open(self.sneak_log_file,"a+") as f:
-            f.write('[%s - %s] Command: %s' % (datetime, history, line))
+            f.write('[%s - %s: %s] Command: %s' % (datetime, username, history, line))
 
     def init_message(self):
 
@@ -109,5 +115,5 @@ class Sneak(object):
 
 if __name__ == '__main__':
 
-    sneak = Sneak()
+    sneak = Sneak('/var/log/cli.log', '/Users/')
     sneak.run()
