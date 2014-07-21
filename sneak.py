@@ -23,6 +23,7 @@ class Sneak(object):
         self.scan_dirs = scan_dirs
         self.system_wide_conf = '/etc/profile'
         self.append_history = 'export PROMPT_COMMAND="history -a"'
+        self.username = None
         self.timestamp = None
         self.datetime = None
         self.histories = None
@@ -45,7 +46,7 @@ class Sneak(object):
 
         return self.histories
 
-    def get_username(path, sep=os.sep):
+    def get_username(self, path, sep=os.sep):
 
         path, filename = os.path.split(os.path.abspath(path))
         bottom, rest = path[1:].split(sep, 1)
