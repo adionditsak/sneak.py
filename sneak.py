@@ -23,7 +23,6 @@ class Sneak(object):
         self.scan_dirs = scan_dirs
         self.system_wide_conf = '/etc/profile'
         self.append_history = 'export PROMPT_COMMAND="history -a"'
-        self.username = None
         self.timestamp = None
         self.datetime = None
         self.histories = None
@@ -45,19 +44,6 @@ class Sneak(object):
         self.histories = [shell_histories_whitespace.replace(' ', '') for shell_histories_whitespace in self.histories]
 
         return self.histories
-
-    def get_username(self, path, sep=os.sep):
-
-        path, filename = os.path.split(os.path.abspath(path))
-        bottom, rest = path[1:].split(sep, 1)
-        bottom = sep + bottom
-        middle, top = os.path.split(rest)
-
-        if 'root' in path:
-            return middle
-        else:
-            return top
-
 
     def ensure_live_history(self, system_wide_conf):
 
@@ -91,18 +77,17 @@ class Sneak(object):
                 if lines[-1] != last_line:
                     self.timestamp = time.time()
                     self.datetime = datetime.datetime.fromtimestamp(self.timestamp).strftime('%Y-%m-%d %H:%M:%S')
-                    self.username = self.get_username(history)
 
                     last_line = lines[-1]
 
-                    self.log_writer(self.datetime, self.username, history, last_line)
+                    self.log_writer(self.datetime, history, last_line)
                 else:
                     time.sleep(1)
 
-    def log_writer(self, datetime, username, history, line):
+    def log_writer(self, datetime, history, line):
 
         with open(self.sneak_log_file, "a+") as f:
-            f.write('[%s - %s: %s] Command: %s' % (datetime, username, history, line))
+            f.write('[%s - %s] Command: %s' % (datetime, history, line))
 
     def init_message(self):
 
