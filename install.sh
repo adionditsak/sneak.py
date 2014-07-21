@@ -19,3 +19,6 @@ echo "Making files executable"
 chmod +x /etc/init.d/sneak /usr/local/bin/sneak/sneak.py
 
 echo "Done - remember to move the master.zip and the sneak.py-master files"
+
+echo ""
+echo "Start with /etc/init.d/sneak start"

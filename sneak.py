@@ -96,7 +96,7 @@ class Sneak(object):
 
     def log_writer(self, datetime, username, history, line):
 
-        with open(self.sneak_log_file,"a+") as f:
+        with open(self.sneak_log_file, "a+") as f:
             f.write('[%s - %s: %s] Command: %s' % (datetime, username, history, line))
 
     def init_message(self):
