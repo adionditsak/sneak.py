@@ -53,7 +53,11 @@ class Sneak(object):
         bottom = sep + bottom
         middle, top = os.path.split(rest)
 
-        return top
+        if 'root' in path:
+            return middle
+        else:
+            return top
+
 
     def ensure_live_history(self, system_wide_conf):
 
