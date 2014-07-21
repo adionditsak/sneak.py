@@ -18,9 +18,4 @@ cp sneak.py /usr/local/bin/sneak/sneak.py
 echo "Making files executable"
 chmod +x /etc/init.d/sneak /usr/local/bin/sneak/sneak.py
 
-echo "Removing zip and git directory"
-cd ..
-rm -rf sneak.py-master/ master.zip
-
-sleep 2
-echo "Done"
+echo "Done - remember to move the master.zip and the sneak.py-master files"
