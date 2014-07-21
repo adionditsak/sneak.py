@@ -115,5 +115,5 @@ class Sneak(object):
 
 if __name__ == '__main__':
 
-    sneak = Sneak('/var/log/cli.log', '/Users/')
+    sneak = Sneak('/var/log/cli.log', '/root/ /home/')
     sneak.run()
