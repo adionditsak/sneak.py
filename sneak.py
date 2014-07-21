@@ -86,7 +86,7 @@ class Sneak(object):
                 if lines[-1] != last_line:
                     self.timestamp = time.time()
                     self.datetime = datetime.datetime.fromtimestamp(self.timestamp).strftime('%Y-%m-%d %H:%M:%S')
-                    self.username = get_username(history)
+                    self.username = self.get_username(history)
 
                     last_line = lines[-1]
 
