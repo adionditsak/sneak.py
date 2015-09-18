@@ -41,6 +41,6 @@ echo ""
 echo "- Done" | cecho LGREEN
 
 echo ""
-echo "- Notes:"
+echo "- Notes:" | cecho YELLOW
 echo "- Remove master.zip and sneak.py-master files from current directory" | cecho YELLOW
-echo "- Start service with $ /etc/init.d/sneak start" | cecho LGREEN
+echo "- Start service with $ /etc/init.d/sneak start" | cecho YELLOW
