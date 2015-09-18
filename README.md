@@ -9,9 +9,9 @@ Very early stage - contributions and good ideas appreciated.
 
 Tested on Debian and Redhat based distros.
 
-###Installation steps
+###Installation
 
-####Copy/paste oneliner
+####oneliner
 
     curl -L https://raw.githubusercontent.com/adionditsak/sneak.py/master/install.sh | sh -
 
