@@ -15,7 +15,7 @@ Tested on Debian and Redhat based distros.
 
     curl -L https://raw.githubusercontent.com/adionditsak/sneak.py/master/install.sh | bash -
 
-###Usage
+###Usage 
 
     [root@server ~]# /etc/init.d/sneak start
     Sneak started.
