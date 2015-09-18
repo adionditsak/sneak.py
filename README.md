@@ -13,7 +13,7 @@ Tested on Debian and Redhat based distros.
 
 ####oneliner
 
-    curl -L https://raw.githubusercontent.com/adionditsak/sneak.py/master/install.sh | sh -
+    curl -L https://raw.githubusercontent.com/adionditsak/sneak.py/master/install.sh | bash -
 
 ###Usage
 
